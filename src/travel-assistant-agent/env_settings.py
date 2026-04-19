@@ -2,6 +2,9 @@
 
 import logging
 import os
+from pathlib import Path
+
+from dotenv import load_dotenv
 
 # Configure logging with basicConfig
 logging.basicConfig(
@@ -10,6 +13,9 @@ logging.basicConfig(
     format="%(asctime)s,p%(process)s,{%(filename)s:%(lineno)d},%(levelname)s,%(message)s",
 )
 logger = logging.getLogger(__name__)
+
+ROOT_DOTENV = Path(__file__).resolve().parents[2] / ".env"
+load_dotenv(dotenv_path=ROOT_DOTENV, override=True)
 
 
 class EnvSettings:

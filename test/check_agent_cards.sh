@@ -6,6 +6,9 @@ set -e
 
 # Get script directory
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+RESULTS_DIR="$SCRIPT_DIR/results"
+
+mkdir -p "$RESULTS_DIR"
 
 echo "Checking Agent Cards..."
 echo "================================"
@@ -21,7 +24,7 @@ fi
 echo ""
 echo "Travel Assistant Agent Card:"
 echo "--------------------------------"
-TRAVEL_CARD_FILE="$SCRIPT_DIR/travel_assistant_agent_card.json"
+TRAVEL_CARD_FILE="$RESULTS_DIR/travel_assistant_agent_card.json"
 TRAVEL_CARD_RESPONSE=$(curl -s http://127.0.0.1:10001/.well-known/agent-card.json)
 
 if [ -n "$TRAVEL_CARD_RESPONSE" ]; then
@@ -41,7 +44,7 @@ fi
 echo ""
 echo "Flight Booking Agent Card:"
 echo "--------------------------------"
-BOOKING_CARD_FILE="$SCRIPT_DIR/flight_booking_agent_card.json"
+BOOKING_CARD_FILE="$RESULTS_DIR/flight_booking_agent_card.json"
 BOOKING_CARD_RESPONSE=$(curl -s http://127.0.0.1:10002/.well-known/agent-card.json)
 
 if [ -n "$BOOKING_CARD_RESPONSE" ]; then
